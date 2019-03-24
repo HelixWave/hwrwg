@@ -1,0 +1,234 @@
+<configs>
+<!-- Additional groups and probabilities mix -->
+
+<!-- Set a higher max_count of storeGroup from 4 to X use if you find yourself getting too many stores
+<set xpath="/rwgmixer/prefab_rules/prefab_rule[@name='commercialGroup']/prefab[@rule='storeGroup']/@max_count">100</set>
+-->
+<remove xpath="/rwgmixer/prefab_rules/prefab_rule[@name='townGroup']"/>
+<remove xpath="/rwgmixer/prefab_rules/prefab_rule[@name='wildernessGroup']"/>
+<remove xpath="/rwgmixer/prefab_rules/prefab_rule[@name='industrialGroup']"/>
+<remove xpath="/rwgmixer/prefab_rules/prefab_rule[@name='storeGroup']"/>
+<remove xpath="/rwgmixer/prefab_rules/prefab_rule[@name='downtownGroup']"/>
+<remove xpath="/rwgmixer/prefab_rules/prefab_rule[@name='residentialNew_ServBldgs']"/>
+<remove xpath="/rwgmixer/prefab_rules/prefab_rule[@name='ruralGroup']"/>
+<remove xpath="/rwgmixer/prefab_rules/prefab_rule[@name='oldResidential_Bldgs']"/>
+
+
+<append xpath="/rwgmixer/prefab_rules">
+	<prefab_rule name="townGroup"> <!-- Increased probabilities of commercialGroup -->
+		<prefab rule="residentialOldGroup"/>
+		<prefab rule="residentialNewGroup"/>
+		<prefab rule="commercialGroup" prob="1"/>
+		<prefab rule="downtownGroup"/>
+		<prefab rule="industrialGroup"/>
+		<prefab rule="ruralGroup"/>
+		<prefab rule="detailFillerGroup" prob="0.05"/>
+	</prefab_rule>
+
+	<prefab_rule name="industrialGroup"> <!-- Throttled utility_waterworks_01 and utility_celltower_01/02s -->
+		<prefab rule="skyscrapers" min_count="1" max_count="2"/>
+		<prefab rule="industrial_Bldgs" max_count="8"/>
+		<prefab rule="industrial_JunkyardsLots" max_count="4"/>
+		<prefab rule="industrial_MpWasteBldgs" max_count="4"/>
+		<prefab rule="industrial_RubbleBldgs" max_count="4"/>
+	</prefab_rule>
+
+	<prefab_rule name="commercialGroup"> <!-- Removed storeGroup max_count -->
+		<prefab rule="diner_FastfoodGroup" max_count="2"/>
+		<prefab rule="gas_Station_Group" max_count="2"/>
+		<prefab rule="storeGroup"/>
+		<prefab name="carlot_01" max_count="2"/>
+		<prefab name="carlot_02" max_count="2"/>
+		<prefab name="skate_park_01"  max_count="1"/>
+	</prefab_rule>
+
+	<prefab_rule name="storeGroup"> <!-- removed most probabilities and throttled a couple problem children pois -->
+		<prefab name="store_gun_lg_01"/>
+		<prefab name="store_hardware_lg_01"/>
+		<prefab name="store_book_lg_01"/>
+		<prefab name="store_grocery_lg_01"/>
+		<prefab name="store_bank_lg_01"/>
+		<prefab name="store_laundry_01" prob="0.09"/>
+		<prefab name="store_salon" prob="0.05" />
+		<prefab name="store_gun_sm_01"/>
+		<prefab name="store_book_sm_01"/>
+		<prefab name="store_autoparts_01"/>
+		<prefab name="store_hardware_sm_01"/>
+		<prefab name="store_grocery_sm_01"/>
+		<prefab name="store_pharmacy_sm_01" />
+	</prefab_rule>
+
+	<prefab_rule name="downtownGroup"> <!-- Throttle most of downtown otherwise we get tons of bar_sm_01 etc-->
+		<prefab name="business_old_01" max_count="1"/>
+		<prefab name="business_old_02" max_count="1"/>
+		<prefab name="business_old_03" max_count="1"/>
+		<prefab name="business_old_04" max_count="1"/>
+		<prefab name="business_old_05" max_count="1"/>
+		<prefab name="business_old_06" max_count="1"/>
+		<prefab name="business_old_07" max_count="1"/>
+		<prefab name="business_old_08" max_count="1"/>
+		<prefab name="business_strip_old_01" max_count="1"/>
+		<prefab name="business_strip_old_02" max_count="1"/>
+		<prefab name="business_strip_old_03" max_count="1"/>
+		<prefab name="business_strip_old_04" max_count="1"/>
+		<prefab name="courthouse_med_01" max_count="1" />
+		<prefab name="courthouse_med_02" max_count="1" />
+		<prefab name="post_office_sm_01" max_count="1" />
+		<prefab name="post_office_med_01" max_count="1" />
+		<prefab name="mp_waste_bldg_governer_08" max_count="1"/>
+		<prefab name="police_station1" max_count="1"/>
+		<prefab name="hotel_roadside_01" max_count="1"/>
+		<prefab name="hotel_roadside_02" max_count="1"/>
+		<prefab name="hotel_ostrich" max_count="1"/>
+		<prefab name="hotel_new_01" max_count="1"/>
+		<prefab name="prison_01" max_count="1"/>
+		<prefab name="parking_lot_01" max_count="1"/>
+		<prefab name="parking_lot_02" max_count="1"/>
+		<prefab name="parking_lot_03" max_count="1"/>
+		<prefab name="parking_garage_01" max_count="1"/>
+		<prefab name="theater_01"  max_count="1"/>
+		<prefab name="bar_theater_01"  max_count="1"/>
+		<prefab name="bar_stripclub_01" max_count="1"/>
+		<prefab name="bar_sm_01" max_count="1"/>
+		<prefab name="fire_station_01" max_count="1"/>
+		<prefab name="fire_station_02" max_count="1"/>
+		<prefab rule="skyscrapers" min_count="2"/>
+		<prefab name="store_pawn_01" max_count="1" />
+	</prefab_rule>
+
+	<prefab_rule name="wildernessGroup"> <!--Extra Trader count / increased indian_burial_grounds_01 -->
+		<prefab name="settlement_trader_01" min_count="2" max_count="2" prob="2"/>
+		<prefab name="cabin_01" />
+		<prefab name="settlement_trader_02" min_count="2" max_count="2" prob="2"/>
+		<prefab name="cabin_02" />
+		<prefab name="settlement_trader_03" min_count="2" max_count="2" prob="2"/>
+		<prefab name="cabin_03" />
+		<prefab name="settlement_trader_04" min_count="2" max_count="2" prob="2"/>
+		<prefab name="cabin_04" />
+		<prefab name="settlement_trader_05" min_count="2" max_count="2" prob="2"/>
+		<prefab name="cabin_05" />
+		<prefab name="cabin_06" />
+		<prefab name="cabin_07"/>
+		<prefab name="cabin_08"/>
+		<prefab name="cabin_09"/>
+		<prefab name="cabin_10"/>
+		<prefab name="cabin_08"/>
+		<prefab name="cabin_12"/>
+		<prefab name="cabin_13"/>
+		<prefab name="cabin_14"/>
+		<prefab name="cabin_15"/>
+		<prefab name="ranger_station1" />
+		<prefab name="snowy_ski_lodge" />
+		<prefab name="survivor_site_01" />
+		<prefab name="survivor_site_02" />
+		<prefab name="survivor_site_03" />
+		<prefab name="survivor_site_04" />
+		<prefab name="survivor_site_05" />
+		<prefab name="survivor_site_06" />
+		<prefab name="survivor_site_07" />
+		<prefab name="survivor_site_08" />
+		<prefab name="indian_burial_grounds_01" prob="0.18"/>
+		<prefab name="oldwest_graveyard"/>
+		<prefab name="cave_01" />
+		<prefab name="cave_02" />
+		<prefab name="cave_03" />
+		<prefab name="cave_04" />
+	</prefab_rule>
+
+	<prefab_rule name="residentialNew_ServBldgs"> <!--Increase chance of hospital_01 -->
+		<prefab name="church_sm_01" prob="0.1"/>
+		<prefab name="funeral_home_01" prob="0.1" />
+		<prefab name="hospital_01" prob="1"/>
+	</prefab_rule>
+
+	<prefab_rule name="ruralGroup"> <!-- Increase crop_Feilds count to 6 -->
+		<prefab rule="crop_Feilds" max_count="6"/>
+		<prefab rule="barns" max_count="2"/>
+		<prefab rule="waterTowers_Ponds" max_count="2"/>
+		<prefab rule="oldwest_bldgs" max_count="2"/>
+		<prefab rule="armyCamps" max_count="2"/>
+	</prefab_rule>
+
+	<prefab_rule name="oldResidential_Bldgs"> <!-- Vanilla except chance of house_old_gambrel_03 increased 'Carl's Corn-->
+		<prefab name="house_old_bungalow_01" prob="0.18"/>
+		<prefab name="house_old_bungalow_02" prob="0.18"/>
+		<prefab name="house_old_bungalow_04" prob="0.18"/>
+		<prefab name="house_old_bungalow_05" prob="0.18"/>
+		<prefab name="house_old_bungalow_06" prob="0.18"/>
+		<prefab name="house_old_bungalow_07" prob="0.18"/>
+		<prefab name="house_old_bungalow_08" prob="0.18"/>
+		<prefab name="house_old_bungalow_09" prob="0.18"/>
+		<prefab name="house_old_bungalow_10" prob="0.18"/>
+		<prefab name="house_old_bungalow_11" prob="0.18"/>
+		<prefab name="house_old_bungalow_12" prob="0.18"/>
+		<prefab name="house_old_gambrel_01" prob="0.18"/>
+		<prefab name="house_old_gambrel_02" prob="0.18"/>
+		<prefab name="house_old_gambrel_03"/>
+		<prefab name="house_old_mansard_01" prob="0.18"/>
+		<prefab name="house_old_mansard_02" prob="0.18"/>
+		<prefab name="house_old_mansard_03" prob="0.18"/>
+		<prefab name="house_old_mansard_04" prob="0.18"/>
+		<prefab name="house_old_mansard_05" prob="0.18"/>
+		<prefab name="house_old_mansard_06" prob="0.18"/>
+		<prefab name="house_old_modular_01" prob="0.18"/>
+		<prefab name="house_old_modular_02" prob="0.18"/>
+		<prefab name="house_old_modular_03" prob="0.18"/>
+		<prefab name="house_old_modular_04" prob="0.18"/>
+		<prefab name="house_old_modular_05" prob="0.18"/>
+		<prefab name="house_old_modular_06" prob="0.18"/>
+		<prefab name="house_old_modular_07" prob="0.18"/>
+		<prefab name="house_old_modular_08" prob="0.18"/>
+		<prefab name="house_old_pyramid_01" prob="0.18"/>
+		<prefab name="house_old_pyramid_02" prob="0.18"/>
+		<prefab name="house_old_pyramid_03" prob="0.18"/>
+		<prefab name="house_old_pyramid_04" prob="0.18"/>
+		<prefab name="house_old_pyramid_05" prob="0.18"/>
+		<prefab name="house_old_ranch_01" prob="0.18"/>
+		<prefab name="house_old_ranch_05" prob="0.18"/>
+		<prefab name="house_old_ranch_06" prob="0.18"/>
+		<prefab name="house_old_ranch_09" prob="0.18"/>
+		<prefab name="house_old_ranch_10" prob="0.18"/>
+		<prefab name="house_old_tudor_01" prob="0.18"/>
+		<prefab name="house_old_tudor_02" prob="0.18"/>
+		<prefab name="house_old_tudor_03" prob="0.18"/>
+		<prefab name="house_old_tudor_04" prob="0.18"/>
+		<prefab name="house_old_tudor_05" prob="0.18"/>
+		<prefab name="house_old_tudor_06" prob="0.18"/>
+		<prefab name="house_old_victorian_01" prob="0.18"/>
+		<prefab name="house_old_victorian_02" prob="0.18"/>
+		<prefab name="house_old_victorian_03" prob="0.18"/>
+		<prefab name="house_old_victorian_04" prob="0.18"/>
+		<prefab name="house_old_victorian_05" prob="0.18"/>
+		<prefab name="house_old_victorian_06" prob="0.19"/>
+		<prefab name="house_old_victorian_07" prob="0.2"/>
+		<prefab name="house_old_victorian_08" prob="0.21"/>
+		<prefab name="house_old_victorian_09" prob="0.22"/>
+		<prefab name="house_old_victorian_10" prob="0.23"/>
+		<prefab name="house_old_victorian_11" prob="0.24"/>
+		<prefab name="house_old_victorian_12" prob="0.25"/>
+		<prefab name="house_old_victorian_13" />
+	</prefab_rule>
+</append>
+
+
+<!-- Terrain Gen value adjustments -smoothing and evening -->
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='mntHigh_Fr0']/property[@name='octave']/@value">4</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='mntHigh_Fr1']/property[@name='octave']/@value">4</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='mntHigh_Tu0']/property[@name='power']/@value">2.5</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='mntLow_Fr0']/property[@name='octave']/@value">2</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='mntLow_Fr1']/property[@name='octave']/@value">2</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='wrld_Refiner0']/property[@name='scale']/@value">88</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='wrld_Refiner1']/property[@name='scale']/@value">84</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='wtrTerra_Sb2']/property[@name='scale']/@value">-1.5</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/module[@name='MasterScaleBias']/property[@name='bias']/@value">15</set>
+<set xpath="/rwgmixer/terrain_generators/terrain_generator[@name='vanilla']/@water_level">35</set>
+
+<!-- Biome Gen value adjustments -->
+<set xpath="/rwgmixer/biome_generators/biome_generator[@name='vanillaSmall']/module[@name='voronoi']/property[@name='frequency']/@value">.0006</set>
+<set xpath="/rwgmixer/biome_generators/biome_generator[@name='vanillaSmall']/module[@name='scaleOutput']/property[@name='scale']/@value">1.8</set>
+<set xpath="/rwgmixer/biome_generators/biome_generator[@name='vanillaSmall']/module[@name='dithering']/property[@name='power']/@value">5</set>
+<set xpath="/rwgmixer/biome_generators/biome_generator[@name='vanillaSmall']/module[@name='dithering']/property[@name='roughness']/@value">1</set>
+<set xpath="/rwgmixer/biome_generators/biome_generator[@name='vanillaSmall']/module[@name='jiggle']/property[@name='power']/@value">5</set>
+<set xpath="/rwgmixer/biome_generators/biome_generator[@name='vanillaSmall']/module[@name='jiggle']/property[@name='roughness']/@value">1</set>
+
+</configs>
