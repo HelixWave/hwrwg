@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<ModInfo>
+		<Name value="hwrwg" />
+		<Description value="Random World generation tweaks and supporting biome swaps" />
+		<Author value="HelixWave" />
+		<Version value="2.0" />
+		<Website value="https://helixwave.com" />
+	</ModInfo>
+</xml>
